@@ -8,12 +8,13 @@
 
 #import "TYVBrightnessAlignmentViewController.h"
 #import "TYVBrightnessAlignmentView.h"
+#import "TYVBrightnessAlignmentViewModel.h"
 #import "TYVMacro.h"
 
 TYVViewControllerProperty(TYVBrightnessAlignmentViewController, rootView, TYVBrightnessAlignmentView)
 
 @interface TYVBrightnessAlignmentViewController ()
-
+@property (nonatomic, strong)   TYVBrightnessAlignmentViewModel *viewModel;
 @end
 
 @implementation TYVBrightnessAlignmentViewController
@@ -23,12 +24,14 @@ TYVViewControllerProperty(TYVBrightnessAlignmentViewController, rootView, TYVBri
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    TYVBrightnessAlignmentViewModel *viewModel = [TYVBrightnessAlignmentViewModel new];
+    self.viewModel = viewModel;
 }
 
 #pragma mark - Actions
 
 - (IBAction)onDragSlider:(NSSlider *)sender {
-    
+    self.viewModel.brightnessLevel = sender.integerValue;
 }
 
 @end

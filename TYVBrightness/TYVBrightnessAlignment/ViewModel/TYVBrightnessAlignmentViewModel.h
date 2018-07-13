@@ -10,5 +10,6 @@
 
 @interface TYVBrightnessAlignmentViewModel : NSObject
 @property (nonatomic, readonly) NSImage     *image;
-@property (nonatomic, readonly) NSInteger   brightnessLevel;
+
+@property (nonatomic, readwrite)    NSInteger   brightnessLevel;
 @end
