@@ -8,6 +8,7 @@
 
 #import "TYVBrightnessProcessingContext.h"
 #import <CoreImage/CoreImage.h>
+#import "TYVMacro.h"
 
 @interface TYVBrightnessProcessingContext ()
 @property (nonatomic, strong)   NSImage *image;
@@ -36,23 +37,24 @@
 - (void)proccessWithBrightnessLevel:(NSUInteger)level
                     completionBlock:(TYVBrightnessProcessingCompletionBlock)completionBlock
 {
-//    NSBlockOperation *operation = [NSBlockOperation blockOperationWithBlock:^{
+    TYVWeakify(self);
+    NSBlockOperation *operation = [NSBlockOperation blockOperationWithBlock:^{
+        TYVStrongify(self);
 //        CIContext *context = [CIContext new];
 //        CIFilter *filter = [CIFilter filterWithName:@"CIColorControls"];
 //        [filter setValue:self.image forKey:@"inputImage"];
 //        [filter setValue:self.image forKey:@"inputBrightness"];
 //        CIImage *outImage = filter.outputImage;
 //        NSImage *image = [[NSImage alloc] initWithCGImage:outImage size:outImage.extent];
-//
 //        // CGImageRef *imageRef = [context createCGImage:outImage fromRect:outImage.extent];
-//        if (completionBlock) {
-//            //completionBlock()
-//        }
-//    }];
+        if (completionBlock) {
+            dispatch_async(dispatch_get_main_queue(), ^(void){
+                completionBlock(self.image);
+            });
+        }
+    }];
     
-    
-    
-//    [self.queue addOperation:operation];
+    [self.queue addOperation:operation];
 }
 
 #pragma mark - Private Methods

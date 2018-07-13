@@ -37,15 +37,17 @@ TYVViewControllerProperty(TYVBrightnessAlignmentViewController, rootView, TYVBri
 
 - (IBAction)onDragSlider:(NSSlider *)sender {
     self.viewModel.brightnessLevel = sender.integerValue;
+    TYVWeakify(self);
     [self.context proccessWithBrightnessLevel:sender.integerValue completionBlock:^(NSImage *image) {
-        
+        TYVStrongify(self);
+        self.viewModel.image = image;
+        [self.rootView fillWith:self.viewModel];
     }];
 }
 
 #pragma mark - TYVBrightnessAlignmentViewDelegate
 
 - (void)view:(TYVBrightnessAlignmentView *)view addImage:(NSImage *)image {
-    
     self.viewModel.image = image;
     [self.rootView fillWith:self.viewModel];
     TYVBrightnessProcessingContext  *context = [[TYVBrightnessProcessingContext alloc] initWith:image];
