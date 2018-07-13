@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface TYVBrightnessAlignmentViewModel : NSObject
-@property (nonatomic, readonly) NSImage     *image;
-
+@property (nonatomic, readwrite)    NSImage     *image;
 @property (nonatomic, readwrite)    NSInteger   brightnessLevel;
+
 @end

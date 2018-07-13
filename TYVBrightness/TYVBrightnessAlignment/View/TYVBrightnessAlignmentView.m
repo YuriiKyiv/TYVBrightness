@@ -8,19 +8,69 @@
 
 #import "TYVBrightnessAlignmentView.h"
 #import "TYVBrightnessAlignmentViewModel.h"
+
+@interface TYVBrightnessAlignmentView ()
+@property (readonly) NSArray<NSString *>  *acceptableTypes;
+@property (readonly) NSDictionary<NSPasteboardReadingOptionKey, id> *filteringOptions;
+
+@end
+
 @implementation TYVBrightnessAlignmentView
+@dynamic acceptableTypes;
+@dynamic filteringOptions;
+
+#pragma mark - Accessors
+
+- (NSArray<NSString *> *)acceptableTypes {
+    return @[NSURLPboardType];
+}
+
+- (NSDictionary<NSPasteboardReadingOptionKey, id> *)filteringOptions {
+    return @{NSPasteboardURLReadingContentsConformToTypesKey : NSImage.imageTypes};
+}
 
 #pragma mark - Public methods
+
+- (void)configure {
+    [self registerForDraggedTypes:self.acceptableTypes];
+}
 
 - (void)fillWith:(TYVBrightnessAlignmentViewModel *)model {
     self.imageView.image = model.image;
     self.slider.altIncrementValue = model.brightnessLevel;
 }
 
-- (void)drawRect:(NSRect)dirtyRect {
-    [super drawRect:dirtyRect];
+- (NSDragOperation)draggingEntered:(id <NSDraggingInfo>)sender {
+    BOOL allow = [self shouldAllowDrag:sender];
+    return allow ? NSDragOperationCopy : NSDragOperationNone;
+}
+
+- (BOOL)prepareForDragOperation:(id <NSDraggingInfo>)sender {
+    return [self shouldAllowDrag:sender];
+}
+
+- (BOOL)performDragOperation:(id <NSDraggingInfo>)sender {
+    NSPasteboard *pasteBoard = sender.draggingPasteboard;
+    NSArray *urls = [pasteBoard readObjectsForClasses:@[NSURL.class] options:self.filteringOptions];
+    if (urls.count > 0) {
+        [self.delegate view:self addImagesWithURLs:urls];
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
+#pragma mark - Private
+
+- (BOOL)shouldAllowDrag:(id<NSDraggingInfo>)draggingInfo {
+    BOOL canAccept = false;
+    NSPasteboard *pasteBoard = draggingInfo.draggingPasteboard;
+    if ([pasteBoard canReadObjectForClasses:@[NSURL.class]
+                                    options:self.filteringOptions]) {
+        canAccept = YES;
+    }
     
-    // Drawing code here.
+    return canAccept;
 }
 
 @end
