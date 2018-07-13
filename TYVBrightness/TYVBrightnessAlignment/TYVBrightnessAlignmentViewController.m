@@ -9,14 +9,14 @@
 #import "TYVBrightnessAlignmentViewController.h"
 #import "TYVBrightnessAlignmentView.h"
 #import "TYVBrightnessAlignmentViewModel.h"
-#import "TYVImageModel.h"
+#import "TYVBrightnessProcessingContext.h"
 #import "TYVMacro.h"
-\
+
 TYVViewControllerProperty(TYVBrightnessAlignmentViewController, rootView, TYVBrightnessAlignmentView)
 
 @interface TYVBrightnessAlignmentViewController () <TYVBrightnessAlignmentViewDelegate>
 @property (nonatomic, strong)   TYVBrightnessAlignmentViewModel *viewModel;
-@property (nonatomic, strong)   TYVImageModel                   *imageModel;
+@property (nonatomic, strong)   TYVBrightnessProcessingContext  *context;
 @end
 
 @implementation TYVBrightnessAlignmentViewController
@@ -37,19 +37,21 @@ TYVViewControllerProperty(TYVBrightnessAlignmentViewController, rootView, TYVBri
 
 - (IBAction)onDragSlider:(NSSlider *)sender {
     self.viewModel.brightnessLevel = sender.integerValue;
-}
-
-#pragma mark - TYVBrightnessAlignmentViewDelegate
-
-- (void)view:(TYVBrightnessAlignmentView *)view addImagesWithURLs:(NSArray<NSURL *> *)URLs {
-    TYVImageModel *imageModel = [TYVImageModel modelWithURL:URLs.firstObject];
-    self.imageModel = imageModel;
     TYVWeakify(self);
-    [imageModel getImageWithBlock:^(NSImage *image, TYVImageModelToken token) {
+    [self.context proccessWithBrightnessLevel:sender.integerValue completionBlock:^(NSImage *image) {
         TYVStrongify(self);
         self.viewModel.image = image;
         [self.rootView fillWith:self.viewModel];
     }];
+}
+
+#pragma mark - TYVBrightnessAlignmentViewDelegate
+
+- (void)view:(TYVBrightnessAlignmentView *)view addImage:(NSImage *)image {
+    self.viewModel.image = image;
+    [self.rootView fillWith:self.viewModel];
+    TYVBrightnessProcessingContext  *context = [[TYVBrightnessProcessingContext alloc] initWith:image];
+    self.context = context;
 }
 
 @end

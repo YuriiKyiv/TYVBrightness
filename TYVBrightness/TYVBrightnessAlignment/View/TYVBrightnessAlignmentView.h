@@ -12,7 +12,7 @@
 @class TYVBrightnessAlignmentView;
 
 @protocol TYVBrightnessAlignmentViewDelegate
-- (void)view:(TYVBrightnessAlignmentView *)view addImagesWithURLs:(NSArray<NSURL *> *)URLs;
+- (void)view:(TYVBrightnessAlignmentView *)view addImage:(NSImage *)image;
 
 @end
 

@@ -51,9 +51,9 @@
 
 - (BOOL)performDragOperation:(id <NSDraggingInfo>)sender {
     NSPasteboard *pasteBoard = sender.draggingPasteboard;
-    NSArray *urls = [pasteBoard readObjectsForClasses:@[NSURL.class] options:self.filteringOptions];
-    if (urls.count > 0) {
-        [self.delegate view:self addImagesWithURLs:urls];
+    NSImage *image = [[NSImage alloc] initWithPasteboard:pasteBoard];
+    if (image != nil) {
+        [self.delegate view:self addImage:image];
         return YES;
     } else {
         return NO;
@@ -65,6 +65,7 @@
 - (BOOL)shouldAllowDrag:(id<NSDraggingInfo>)draggingInfo {
     BOOL canAccept = false;
     NSPasteboard *pasteBoard = draggingInfo.draggingPasteboard;
+    
     if ([pasteBoard canReadObjectForClasses:@[NSURL.class]
                                     options:self.filteringOptions]) {
         canAccept = YES;

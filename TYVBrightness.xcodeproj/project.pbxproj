@@ -15,7 +15,7 @@
 		5ACC86EA20F93023002125F4 /* TYVBrightnessAlignmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ACC86E920F93023002125F4 /* TYVBrightnessAlignmentView.m */; };
 		5ACC86EE20F931A1002125F4 /* TYVBrightnessAlignmentViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ACC86ED20F931A1002125F4 /* TYVBrightnessAlignmentViewModel.m */; };
 		5ACC86F320F93811002125F4 /* TYVMacro.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ACC86F120F93811002125F4 /* TYVMacro.m */; };
-		5ACC86F720F940D2002125F4 /* TYVImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ACC86F620F940D2002125F4 /* TYVImageModel.m */; };
+		5ACC86FF20F945FF002125F4 /* TYVBrightnessProcessingContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ACC86FE20F945FF002125F4 /* TYVBrightnessProcessingContext.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,8 +35,8 @@
 		5ACC86ED20F931A1002125F4 /* TYVBrightnessAlignmentViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYVBrightnessAlignmentViewModel.m; sourceTree = "<group>"; };
 		5ACC86F120F93811002125F4 /* TYVMacro.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYVMacro.m; sourceTree = "<group>"; };
 		5ACC86F220F93811002125F4 /* TYVMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYVMacro.h; sourceTree = "<group>"; };
-		5ACC86F520F940D2002125F4 /* TYVImageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYVImageModel.h; sourceTree = "<group>"; };
-		5ACC86F620F940D2002125F4 /* TYVImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYVImageModel.m; sourceTree = "<group>"; };
+		5ACC86FD20F945FF002125F4 /* TYVBrightnessProcessingContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYVBrightnessProcessingContext.h; sourceTree = "<group>"; };
+		5ACC86FE20F945FF002125F4 /* TYVBrightnessProcessingContext.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYVBrightnessProcessingContext.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,7 +69,7 @@
 		5ACC86CF20F92B47002125F4 /* TYVBrightness */ = {
 			isa = PBXGroup;
 			children = (
-				5ACC86F820F940D5002125F4 /* Models */,
+				5ACC870020F94601002125F4 /* TYVBrightnessProcessingContext */,
 				5ACC86F020F93811002125F4 /* Library */,
 				5ACC86E720F92EAA002125F4 /* TYVBrightnessAlignment */,
 				5ACC86D020F92B47002125F4 /* AppDelegate.h */,
@@ -121,21 +121,13 @@
 			path = Library;
 			sourceTree = "<group>";
 		};
-		5ACC86F420F940D2002125F4 /* TYVImageModel */ = {
+		5ACC870020F94601002125F4 /* TYVBrightnessProcessingContext */ = {
 			isa = PBXGroup;
 			children = (
-				5ACC86F520F940D2002125F4 /* TYVImageModel.h */,
-				5ACC86F620F940D2002125F4 /* TYVImageModel.m */,
+				5ACC86FD20F945FF002125F4 /* TYVBrightnessProcessingContext.h */,
+				5ACC86FE20F945FF002125F4 /* TYVBrightnessProcessingContext.m */,
 			);
-			path = TYVImageModel;
-			sourceTree = "<group>";
-		};
-		5ACC86F820F940D5002125F4 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				5ACC86F420F940D2002125F4 /* TYVImageModel */,
-			);
-			path = Models;
+			path = TYVBrightnessProcessingContext;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,7 +200,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5ACC86F320F93811002125F4 /* TYVMacro.m in Sources */,
-				5ACC86F720F940D2002125F4 /* TYVImageModel.m in Sources */,
+				5ACC86FF20F945FF002125F4 /* TYVBrightnessProcessingContext.m in Sources */,
 				5ACC86EE20F931A1002125F4 /* TYVBrightnessAlignmentViewModel.m in Sources */,
 				5ACC86DD20F92B49002125F4 /* main.m in Sources */,
 				5ACC86EA20F93023002125F4 /* TYVBrightnessAlignmentView.m in Sources */,
