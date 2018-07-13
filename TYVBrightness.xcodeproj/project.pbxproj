@@ -12,6 +12,9 @@
 		5ACC86DA20F92B49002125F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5ACC86D820F92B49002125F4 /* Main.storyboard */; };
 		5ACC86DD20F92B49002125F4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ACC86DC20F92B49002125F4 /* main.m */; };
 		5ACC86E620F92EA5002125F4 /* TYVBrightnessAlignmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ACC86E520F92EA5002125F4 /* TYVBrightnessAlignmentViewController.m */; };
+		5ACC86EA20F93023002125F4 /* TYVBrightnessAlignmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ACC86E920F93023002125F4 /* TYVBrightnessAlignmentView.m */; };
+		5ACC86EE20F931A1002125F4 /* TYVBrightnessAlignmentViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ACC86ED20F931A1002125F4 /* TYVBrightnessAlignmentViewModel.m */; };
+		5ACC86F320F93811002125F4 /* TYVMacro.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ACC86F120F93811002125F4 /* TYVMacro.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +28,12 @@
 		5ACC86DE20F92B49002125F4 /* TYVBrightness.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TYVBrightness.entitlements; sourceTree = "<group>"; };
 		5ACC86E420F92EA5002125F4 /* TYVBrightnessAlignmentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYVBrightnessAlignmentViewController.h; sourceTree = "<group>"; };
 		5ACC86E520F92EA5002125F4 /* TYVBrightnessAlignmentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYVBrightnessAlignmentViewController.m; sourceTree = "<group>"; };
+		5ACC86E820F93023002125F4 /* TYVBrightnessAlignmentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYVBrightnessAlignmentView.h; sourceTree = "<group>"; };
+		5ACC86E920F93023002125F4 /* TYVBrightnessAlignmentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYVBrightnessAlignmentView.m; sourceTree = "<group>"; };
+		5ACC86EC20F931A1002125F4 /* TYVBrightnessAlignmentViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYVBrightnessAlignmentViewModel.h; sourceTree = "<group>"; };
+		5ACC86ED20F931A1002125F4 /* TYVBrightnessAlignmentViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYVBrightnessAlignmentViewModel.m; sourceTree = "<group>"; };
+		5ACC86F120F93811002125F4 /* TYVMacro.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYVMacro.m; sourceTree = "<group>"; };
+		5ACC86F220F93811002125F4 /* TYVMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYVMacro.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +66,7 @@
 		5ACC86CF20F92B47002125F4 /* TYVBrightness */ = {
 			isa = PBXGroup;
 			children = (
+				5ACC86F020F93811002125F4 /* Library */,
 				5ACC86E720F92EAA002125F4 /* TYVBrightnessAlignment */,
 				5ACC86D020F92B47002125F4 /* AppDelegate.h */,
 				5ACC86D120F92B47002125F4 /* AppDelegate.m */,
@@ -72,10 +82,39 @@
 		5ACC86E720F92EAA002125F4 /* TYVBrightnessAlignment */ = {
 			isa = PBXGroup;
 			children = (
+				5ACC86EF20F931A3002125F4 /* ViewModel */,
+				5ACC86EB20F93027002125F4 /* View */,
 				5ACC86E420F92EA5002125F4 /* TYVBrightnessAlignmentViewController.h */,
 				5ACC86E520F92EA5002125F4 /* TYVBrightnessAlignmentViewController.m */,
 			);
 			path = TYVBrightnessAlignment;
+			sourceTree = "<group>";
+		};
+		5ACC86EB20F93027002125F4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5ACC86E820F93023002125F4 /* TYVBrightnessAlignmentView.h */,
+				5ACC86E920F93023002125F4 /* TYVBrightnessAlignmentView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5ACC86EF20F931A3002125F4 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5ACC86EC20F931A1002125F4 /* TYVBrightnessAlignmentViewModel.h */,
+				5ACC86ED20F931A1002125F4 /* TYVBrightnessAlignmentViewModel.m */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		5ACC86F020F93811002125F4 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				5ACC86F220F93811002125F4 /* TYVMacro.h */,
+				5ACC86F120F93811002125F4 /* TYVMacro.m */,
+			);
+			path = Library;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,7 +186,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5ACC86F320F93811002125F4 /* TYVMacro.m in Sources */,
+				5ACC86EE20F931A1002125F4 /* TYVBrightnessAlignmentViewModel.m in Sources */,
 				5ACC86DD20F92B49002125F4 /* main.m in Sources */,
+				5ACC86EA20F93023002125F4 /* TYVBrightnessAlignmentView.m in Sources */,
 				5ACC86E620F92EA5002125F4 /* TYVBrightnessAlignmentViewController.m in Sources */,
 				5ACC86D220F92B47002125F4 /* AppDelegate.m in Sources */,
 			);

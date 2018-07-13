@@ -7,6 +7,10 @@
 //
 
 #import "TYVBrightnessAlignmentViewController.h"
+#import "TYVBrightnessAlignmentView.h"
+#import "TYVMacro.h"
+
+TYVViewControllerProperty(TYVBrightnessAlignmentViewController, rootView, TYVBrightnessAlignmentView)
 
 @interface TYVBrightnessAlignmentViewController ()
 
@@ -14,9 +18,17 @@
 
 @implementation TYVBrightnessAlignmentViewController
 
+#pragma mark - View Lifecycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do view setup here.
+
+}
+
+#pragma mark - Actions
+
+- (IBAction)onDragSlider:(NSSlider *)sender {
+    
 }
 
 @end

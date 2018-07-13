@@ -702,11 +702,11 @@
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
-        <!--View Controller-->
+        <!--Brightness Alignment View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" sceneMemberID="viewController">
-                    <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
+                <viewController id="XfG-lQ-9wD" customClass="TYVBrightnessAlignmentViewController" sceneMemberID="viewController">
+                    <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl" customClass="TYVBrightnessAlignmentView">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
@@ -714,7 +714,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                                 <subviews>
                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BLA-P0-zVh">
-                                        <rect key="frame" x="215" y="139" width="50" height="131"/>
+                                        <rect key="frame" x="215" y="220" width="50" height="50"/>
                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="xzN-e1-HJq"/>
                                     </imageView>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wbi-dF-V8v">
@@ -733,7 +733,10 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="120" id="sJQ-yL-Ayh"/>
                                                 </constraints>
-                                                <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="R9b-tN-vzK"/>
+                                                <sliderCell key="cell" state="on" alignment="left" minValue="-100" maxValue="100" tickMarkPosition="above" sliderType="linear" id="R9b-tN-vzK"/>
+                                                <connections>
+                                                    <action selector="onDragSlider:" target="XfG-lQ-9wD" id="IZu-5i-JvE"/>
+                                                </connections>
                                             </slider>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1U5-66-Qkm">
                                                 <rect key="frame" x="163" y="0.0" width="27" height="17"/>
@@ -772,6 +775,10 @@
                             <constraint firstItem="RsC-Ag-Uq6" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="lj7-WI-n50"/>
                             <constraint firstAttribute="bottom" secondItem="RsC-Ag-Uq6" secondAttribute="bottom" id="pX3-6s-ydp"/>
                         </constraints>
+                        <connections>
+                            <outlet property="imageView" destination="BLA-P0-zVh" id="LUM-dm-bpD"/>
+                            <outlet property="slider" destination="HMZ-7F-2Kv" id="TRM-lG-LmQ"/>
+                        </connections>
                     </view>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
