@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  TYVBrightnessAlignmentViewController.h
 //  TYVBrightness
 //
 //  Created by Yurii Trokhymchuk on 13.07.18.
@@ -8,8 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface ViewController : NSViewController
-
+@interface TYVBrightnessAlignmentViewController : NSViewController
 
 @end
-
